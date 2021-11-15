@@ -6,7 +6,7 @@ public class Lesson3 {
         fromZeroToHundred();
         sixToTwo();
         diagonal();
-        int[] arrayTo = arrayTo(5, 10);
+        int[] arrayTo = arrayTo(15, 10);
         System.out.println(Arrays.toString(arrayTo));
         minMax();
     }
