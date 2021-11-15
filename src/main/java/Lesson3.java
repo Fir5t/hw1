@@ -8,7 +8,8 @@ public class Lesson3 {
         diagonal();
         int[] arrayTo = arrayTo(15, 10);
         System.out.println(Arrays.toString(arrayTo));
-        minMax();
+        int[] arr = {1, 5, 15, 2, 11, 4, 97, 2, 4, 8, 9, 43};
+        minMax(arr);
         int[] halfArr = {1, 10, 12, 4, 6, 5, 4, 32, 1, 2, 5};
         System.out.println(halfMassive(halfArr));
     }
@@ -67,12 +68,10 @@ public class Lesson3 {
         return array;
     }
     //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
-   public static void minMax(){
-        int[] arr = new int[10];
-        int max = 0;
-        int min = 0;
+   public static void minMax(int[] arr){
+        int min = arr[0];
+        int max = arr[0];
         for (int i = 0; i < arr.length; i++){
-            arr[i] = (int)(Math.random() * 100);
             if(arr[i] > max){
                 max = arr[i];
             }
@@ -100,11 +99,9 @@ public class Lesson3 {
          return false;
     }
 
-    public static void halfArrCompare(String[] halfArr){
-
     }
 
-}
+
 
 
 
