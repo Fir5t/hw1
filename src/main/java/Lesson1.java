@@ -14,7 +14,7 @@ public class Lesson1 {
     }
 
     static void checkSumSing(){
-        int a = -20;
+        int a = -14;
         int b = 25;
         int c = a + b;
         if (c >= 0){
