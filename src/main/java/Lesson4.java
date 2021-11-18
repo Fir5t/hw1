@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Lesson4 {
-    private final static int SIZE = 3;
+    private final static int SIZE = 5;
     private final static int DOTS_TO_WIN = 3;
     private final static char DOT_EMPTY = '.';
     private final static char DOT_X = 'X';
@@ -10,15 +10,14 @@ public class Lesson4 {
     private static char[][] MAP;
     private final static Scanner SCANNER = new Scanner(System.in);
     private final static Random RANDOM = new Random();
-
+// Основоной игровой цикл
     public static void main(String[] args) {
         initMap();
         printMap();
         while (true) {
-            humanTrue();
-            aiTurn();
+            humanTurn(); // Первым ходит игрок
             printMap();
-            if (checkWin(DOT_X)) {
+            if (checkWin(DOT_X)) {   // проверяется выиграл он или нет
                 System.out.println("Человек победил");
                 break;
             }
@@ -32,11 +31,15 @@ public class Lesson4 {
                 System.out.println("Победил ИИ");
                 break;
             }
+            if (isMapFull()) {
+                System.out.println("Ничья");
+                break;
+            }
         }
         System.out.println("Игра окончена");
         SCANNER.close();
     }
-
+// Проверка условия выигрыша
     private static boolean checkWin(char symbol) {
         if (MAP[0][0] == symbol && MAP[0][1] == symbol && MAP[0][2] == symbol)
             return true;
@@ -56,7 +59,7 @@ public class Lesson4 {
             return true;
         return false;
     }
-
+// Метод проверки пустой ячейки
     private static boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -66,7 +69,7 @@ public class Lesson4 {
         }
         return true;
     }
-
+// Метод хода ИИ
     private static void aiTurn() {
         int x;
         int y;
@@ -77,8 +80,8 @@ public class Lesson4 {
         System.out.println("Компьютер сходил в точку" + (x + 1) + " " + (y + 1));
         MAP[y][x] = DOT_O;
     }
-
-    private static void humanTrue() {
+//Метод хода игрока
+    private static void humanTurn() {
         int x;
         int y;
         do {
@@ -88,7 +91,7 @@ public class Lesson4 {
         } while (!isCellValid(x, y));
         MAP[y][x] = DOT_X;
     }
-
+// Метод проверяет возможность хода в ячейку
     private static boolean isCellValid(int x, int y) {
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
             return false;
@@ -98,7 +101,7 @@ public class Lesson4 {
         }
         return false;
     }
-
+// Метод инициализируем игровое поле
     private static void initMap() {
         MAP = new char[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
@@ -107,7 +110,7 @@ public class Lesson4 {
             }
         }
     }
-
+// Метод отрисовывает игрое поле
     private static void printMap() {
         for (int i = 0; i <= SIZE; i++) {
             System.out.print(i + " ");
